@@ -2,8 +2,8 @@ name: coral
 channels:
   - pytorch
   - nvidia
-  - anaconda
   - conda-forge
+  - anaconda
   - defaults
 dependencies:
   - _libgcc_mutex=0.1=main
@@ -79,6 +79,7 @@ dependencies:
   - h5py=3.9.0=py38he06866b_0
   - hdf5=1.12.1=h2b7332f_3
   - huggingface_hub=0.17.3=py38h06a4308_0
+  - hydra-core=1.3.2=pyhd8ed1ab_0
   - icu=58.2=hf484d3e_1000
   - idna=3.4=py38h06a4308_0
   - importlib-metadata=6.0.0=py38h06a4308_0
@@ -189,6 +190,7 @@ dependencies:
   - numpy=1.24.3=py38hf6e8229_1
   - numpy-base=1.24.3=py38h060ed82_1
   - oauthlib=3.2.2=py38h06a4308_0
+  - omegaconf=2.3.0=pyhd8ed1ab_0
   - openh264=2.1.1=h4ff587b_0
   - openjpeg=2.4.0=h3ad879b_0
   - openssl=3.0.16=h5eee18b_0
@@ -305,7 +307,11 @@ dependencies:
   - zstd=1.5.5=hc292b87_0
   - pip:
       - gdown==5.2.0
+      - kaleido==0.2.1
       - llvmlite==0.41.1
       - narwhals==1.41.0
       - numba==0.58.1
       - plotly==6.1.2
+      - pynndescent==0.5.13
+      - thop==0.1.1-2209072238
+      - umap-learn==0.5.7
