@@ -1,0 +1,20 @@
+{
+    "mimic": {
+        "path": "dataset/mimic/im.pk"
+    },
+    "mosi": {
+        "path": "dataset/mosi/mosi_data.pkl"
+    },
+    "mosei": {
+        "path": "dataset/mosei/mosei_senti_data.pkl"
+    },
+    "humor": {
+        "path": "dataset/urfunny/humor.pkl"
+    },
+    "sarcasm": {
+        "path": "dataset/mustard/sarcasm.pkl"
+    },
+    "trifeatures": {
+        "path": "dataset/trifeature/trifeatures_3combi"
+    }
+}
