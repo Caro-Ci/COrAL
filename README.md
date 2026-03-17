@@ -11,7 +11,7 @@ conda activate coral
 ### Experiments on MultiBench data
 We evaluate COrAL on the 5 MultiBench datasets CMU-MOSI, CMU-MOSEI, MIMIC III, UR-FUNNY and MUsTARD. For MIMIC III, data is only available if you have the necessary credentials. Before running the script, please adjust the paths in `dataset/catalog.json` accordingly. This will run COrAL with five different seeds for the chosen dataset:
 ```
-pyhon main_multibench.py --dataset="mosi" #Can be "mosi", "mosei", "mimic", "humor" or "sarcasm"
+python main_multibench.py --dataset="mosi" #Can be "mosi", "mosei", "mimic", "humor" or "sarcasm"
 ```
 ### Experiments on synthetic trifeature dataset
 To evaluate the capture of all three information components with COrAL, we use the trifeature dataset. When first running it, the dataset will be generated first. This will run COrAL with five different seeds and give accuracies for three downstream tasks that depend on one information component each:
