@@ -14,7 +14,7 @@ We evaluate COrAL on the 5 MultiBench datasets CMU-MOSI, CMU-MOSEI, MIMIC III, U
 python main_multibench.py --dataset="mosi" #Can be "mosi", "mosei", "mimic", "humor" or "sarcasm"
 ```
 ### Experiments on synthetic trifeature dataset
-To evaluate the capture of all three information components with COrAL, we use the trifeature dataset. When first running it, the dataset will be generated first. This will run COrAL with five different seeds and give accuracies for three downstream tasks that depend on one information component each:
+To evaluate the capture of all three information components with COrAL, we use the trifeature dataset. When running it for the first time, the dataset will be generated in the beginning. This will run COrAL with five different seeds and give accuracies for three downstream tasks that depend on one information component each:
 ```
 python main_trifeature.py 
 ```
