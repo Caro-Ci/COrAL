@@ -16,7 +16,7 @@ pyhon main_multibench.py --dataset="mosi" #Can be "mosi", "mosei", "mimic", "hum
 ### Experiments on synthetic trifeature dataset
 To evaluate the capture of all three information components with COrAL, we use the trifeature dataset. When first running it, the dataset will be generated first. This will run COrAL with five different seeds and give accuracies for three downstream tasks that depend on one information component each:
 ```
-pyhon main_trifeature.py 
+python main_trifeature.py 
 ```
 ## Thanks
 We wish to thank the contributors of the repository [CoMM](https://github.com/Duplums/CoMM), which has greatly aided the implementation of COrAL.
