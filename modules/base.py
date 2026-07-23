@@ -4,6 +4,7 @@ from typing import Tuple, Dict
 from abc import ABC, abstractmethod
 import torch
 import math
+import time
 import sys
 from utils import set_weight_decay_per_param
 
@@ -17,6 +18,8 @@ class BaseModel(ABC, LightningModule):
     def __init__(self, optim_kwargs: Dict):
         super().__init__()
         self.optim_kwargs = optim_kwargs
+        self._epoch_start_time = None
+        self.epoch_times = []
         #self.b = 0.25
        # self.automatic_optimization = False
 
@@ -38,7 +41,18 @@ class BaseModel(ABC, LightningModule):
         #loss = (loss - self.b).abs() + self.b
         self.log("train/loss_total", loss, on_epoch=True,sync_dist=True, prog_bar=True)
         return loss
-
+    def on_train_epoch_start(self):
+            self._epoch_start_time = time.time()
+    def on_train_epoch_end(self):
+            elapsed = time.time() - self._epoch_start_time
+            self.epoch_times.append(elapsed)
+            metrics = self.trainer.callback_metrics
+            metrics_str = " | ".join(f"{k}={v:.4f}" for k, v in metrics.items())
+            print(f"Epoch {self.current_epoch}: {metrics_str} | time={elapsed:.1f}s")
+    
+    def median_epoch_time(self):
+        return np.median(self.epoch_times) if self.epoch_times else 0.0    
+        
     def validation_step(self, batch, batch_idx):
         outputs = self.forward(*batch, mode="validation")
         loss_dict = self.loss(outputs)

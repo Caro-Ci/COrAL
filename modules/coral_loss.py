@@ -8,7 +8,7 @@ from utils import all_gather_batch_with_grad
 
 class CoralLoss(nn.Module):
 
-    def __init__(self, temperature=0.1, ortho_weights=1, unique_weights=1, shared_weights=1):
+    def __init__(self, temperature=0.1, ortho_weights=10, unique_weights=1, shared_weights=1):
         super().__init__()
         self.temperature = temperature
         self.INF = 1e8
@@ -18,15 +18,15 @@ class CoralLoss(nn.Module):
         
     def orthogonality_loss(self, embeddings1, embeddings2):
         """
-        Encourages modality embeddings to be orthogonal via CosineEmbeddingLoss.
-        Assumes inputs are of shape [batch, dim].
+        Encourages modality embeddings to be orthogonal by penalizing the square
+        of their cosine-similarity.
+        Inputs: embeddings1, embeddings2 of shape [batch, dim]
         """
-        batch = embeddings1.shape[0]
-        target = -torch.ones(batch, device=embeddings1.device)  
-        ortho_loss = nn.CosineEmbeddingLoss(reduction="mean")
-        return ortho_loss(embeddings1, embeddings2, target)
+        # compute cosine similarity per sample in batch
+        cos_sim = func.cosine_similarity(embeddings1, embeddings2, dim=-1)  
+        loss = (cos_sim ** 2).mean()  
+        return loss
 
-    
     def infonce(self, z1, z2):
         N = len(z1)
         sim_zii= (z1 @ z1.T) / self.temperature 

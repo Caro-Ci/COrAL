@@ -42,7 +42,7 @@ class COrAL(BaseModel):
         # Build the loss
         self.loss = CoralLoss(**loss_kwargs)
         self.asym_masking = asym_masking
-        self.ratio = 0.05
+        self.ratio = 0.75
         
 
 
@@ -64,12 +64,6 @@ class COrAL(BaseModel):
         # compute features for all modalities
         all_masks =[[True,True]]
         if self.asym_masking:
-            if cur_ep == 25:
-               self.ratio= 0.35
-            if cur_ep == 50:
-                self.ratio= 0.55
-            if cur_ep == 75:
-                self.ratio= 0.75
             if mode == "asymetric":
                 z1, z1mods = self.encoder(x1, mask_modalities=all_masks, masking=0,ratio = self.ratio)
                 z2, z2mods = self.encoder(x2, mask_modalities=all_masks, masking=1,ratio= self.ratio)
