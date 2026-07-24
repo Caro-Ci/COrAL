@@ -107,7 +107,9 @@ def main(dataset):
         results['accuracies'].append(score_acc)
         m_epoch_time= coral.median_epoch_time()
         results['epoch_times'].append(m_epoch_time)
-        y, shared, u1, u2 = comm.extract_all_the_features(downstream_data.test_dataloader())
+       # if seed == 41:
+       #    contour_train_test(coral,downstream_data, "density_plot_umap.svg",mod1_name="Vision", mod2_name="Text")
+        y, shared, u1, u2 = coral.extract_all_the_features(downstream_data.test_dataloader())
         acos = cosine_u1_u2(u1, u2)
         results['acos_u1u2'].append(acos)
         results['grass_u1u2'].append(grassmann_distance(u1, u2, k=10))
