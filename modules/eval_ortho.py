@@ -106,7 +106,7 @@ def contour_train_test(model, data_module, name, mod1_name="Vision", mod2_name="
     max_bw_x = max(bandwidths_x)
     max_bw_y = max(bandwidths_y)
 
-    x_min, x_max = X_umap[:, 0].min(), X_umap[:, 0].max()
+        x_min, x_max = X_umap[:, 0].min(), X_umap[:, 0].max()
     y_min, y_max = X_umap[:, 1].min(), X_umap[:, 1].max()
 
     padding_frac = 0.1
@@ -117,6 +117,14 @@ def contour_train_test(model, data_module, name, mod1_name="Vision", mod2_name="
     x_max += padding_frac * x_range + 3 * max_bw_x
     y_min -= padding_frac * y_range + 3 * max_bw_y
     y_max += padding_frac * y_range + 3 * max_bw_y
+
+    x_span = x_max - x_min
+    y_span = y_max - y_min
+    max_span = max(x_span, y_span)
+    x_center = (x_max + x_min) / 2
+    y_center = (y_max + y_min) / 2
+    x_min, x_max = x_center - max_span / 2, x_center + max_span / 2
+    y_min, y_max = y_center - max_span / 2, y_center + max_span / 2
 
     xx, yy = np.mgrid[x_min:x_max:300j, y_min:y_max:300j]
     density_map = np.zeros((300, 300, len(unique_labels)))
