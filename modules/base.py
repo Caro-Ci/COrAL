@@ -3,7 +3,7 @@ from torch import Tensor, nn
 from typing import Tuple, Dict
 from abc import ABC, abstractmethod
 import torch
-import numpy
+import numpy as np
 import math
 import time
 import sys
