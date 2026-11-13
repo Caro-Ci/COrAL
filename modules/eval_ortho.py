@@ -106,7 +106,7 @@ def contour_train_test(model, data_module, name, mod1_name="Vision", mod2_name="
     max_bw_x = max(bandwidths_x)
     max_bw_y = max(bandwidths_y)
 
-        x_min, x_max = X_umap[:, 0].min(), X_umap[:, 0].max()
+    x_min, x_max = X_umap[:, 0].min(), X_umap[:, 0].max()
     y_min, y_max = X_umap[:, 1].min(), X_umap[:, 1].max()
 
     padding_frac = 0.1
