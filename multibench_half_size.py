@@ -70,7 +70,7 @@ def main(dataset):
                         GRU (indim=12, hiddim=250, dropout=False, batch_first=True),]
             input_adapters=[FeaturesInputAdapter(n_features=10,dim_tokens=250), None]
             lin_layers= [nn.Sequential( nn.Linear(250, 250),nn.LayerNorm(250),nn.GELU(), nn.Linear(250, 125)),
-                            nn.Sequential( nn.Linear(250, 250),nn.LayerNorm(250),nn.GELU(), nn.Linear(250, 125))],
+                            nn.Sequential( nn.Linear(250, 250),nn.LayerNorm(250),nn.GELU(), nn.Linear(250, 125)),]
             embed_dim= 250
             modalities = ["tabular", "timeseries"]
             augmentations =["noise", "drop+noise"]
