@@ -1,5 +1,5 @@
 # COrAL: Orthogonalized Multimodal Contrastive Learning with Asymmetric Masking 
-COrAL, a pioneering framework that explicitly and simultaneously preserves all three multimodal information components (redundant, unique, and synergistic), features a dual-path architecture with orthogonality constraints to enforce a clean separation between shared and unique representations, combined with asymmetric masking using complementary view-specific patterns, which encourages cross-modal inference for synergy capture.
+COrAL, a pioneering framework that simultaneously preserves all three multimodal information components (redundant, unique, and synergistic), features a dual-path architecture with orthogonality constraints to enforce a geometric separation between shared and unique representations, combined with asymmetric masking using complementary view-specific patterns, which encourages cross-modal inference for synergy capture.
 ## How to run COrAL
 ### Installation
 You can clone the code and install all required packages by running the following lines:
